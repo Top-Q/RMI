@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"
+   profile="rmi">
+ <!-- Remember to set System Property or Property in the Tomcat properties file or in Spring Java Config(code) -->
+ <!-- with "spring.profiles.active=rmi" -->
+
+
+		<bean id="helloService" class="com.etymgiko.springrmiexample.server.MockServiceImpl">
+		</bean>
+
+		<bean id="rmiServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
+		    <!--  the Service Name -->
+			<property name="serviceName" value="HelloService" />
+			 <!-- ref to the bean(can also be existing bean) -->
+			<property name="service" ref="helloService" />
+			<!-- the interface -->
+			<property name="serviceInterface" value="com.etymgiko.springrmiexample.shared.HelloService" /> 
+			<!-- the port ,defaults to 1099 -->
+			<property name="registryPort" value="1099" />  
+		</bean>
+
+
+</beans>
