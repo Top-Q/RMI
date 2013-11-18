@@ -20,6 +20,23 @@
 			<!-- the port ,defaults to 1099 -->
 			<property name="registryPort" value="1099" />  
 		</bean>
+		
+<!-- multiple services can be exported with RMI -->
+<!-- just each service has its own registeryPort and RmiServiceExporter instance -->
+
+		<bean id="AnotherService" class="com.etymgiko.springrmiexample.server.AnotherServiceImpl">
+		</bean>
+		
+		<bean id="rmiServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
+		    <!--  the Service Name -->
+			<property name="serviceName" value="AnotherService" />
+			 <!-- ref to the bean(can also be existing bean) -->
+			<property name="service" ref="AnotherService" />
+			<!-- the interface -->
+			<property name="serviceInterface" value="com.etymgiko.springrmiexample.shared.AnotherService" /> 
+			<!-- the port ,defaults to 1099 -->
+			<property name="registryPort" value="1098" />  
+		</bean>
 
 
 </beans>
