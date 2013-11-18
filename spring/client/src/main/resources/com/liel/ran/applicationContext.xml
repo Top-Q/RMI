@@ -11,7 +11,7 @@
     </bean>
     
    <bean id="usersFacadeLocal" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
-        <property name="serviceUrl" value="rmi://10.1.1.131:1099/usersFacadeImpl"/>
+        <property name="serviceUrl" value="rmi://10.1.1.131:1098/usersFacadeImpl"/>
         <property name="serviceInterface" value="com.skyfence.management.cm.facade.UsersFacade"/>
     </bean>
 
