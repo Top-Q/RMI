@@ -6,6 +6,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * @author Ivan Holub
  */
+@Primary /* Add @Primary so spring autowire will use the local instance and not the instance which exported in rmi */
 public class HelloServiceImpl implements HelloService {
 
     private Log log = LogFactory.getLog(getClass());
